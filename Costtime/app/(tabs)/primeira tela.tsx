@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { StyleSheet, TextInput, TouchableOpacity, Text, View, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
+  const router = useRouter();
+
   const handleSubmit = () => {
-    console.log({ email, senha });
+    // Aqui você faria a validação real
+    if (email !== '' && senha !== '') {
+      router.push('/perfil'); // Vai para o Perfil
+    }
   };
 
   return (
@@ -27,7 +33,7 @@ export default function LoginScreen() {
           {/* Título */}
           <Text style={styles.title}>Bem Vindo de volta!</Text>
           <Text style={styles.subtitle}>
-            Preencha os seus dados ou continue com as redes sociais
+            Preencha seus dados ou continue com as redes sociais
           </Text>
 
           {/* Inputs */}
@@ -69,7 +75,13 @@ export default function LoginScreen() {
 
           {/* Cadastro */}
           <Text style={styles.signupText}>
-            Novo usuário? <Text style={styles.signupLink}>Cadastrar</Text>
+            Novo usuário? {' '}
+            <Text
+              style={styles.signupLink}
+              onPress={() => router.push('/cadastro')}
+            >
+              Cadastrar
+            </Text>
           </Text>
         </View>
       </LinearGradient>

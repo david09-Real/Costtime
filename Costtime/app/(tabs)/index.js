@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground, Picker } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { LinearGradient } from "expo-linear-gradient";
+import { Picker } from "@react-native-picker/picker"; 
 
 export default function Cadastro() {
   const [image, setImage] = useState(null);
@@ -33,7 +34,7 @@ export default function Cadastro() {
           )}
         </TouchableOpacity>
 
-        <Text style={styles.title}>Complete seu perfil</Text>
+        <Text style={styles.title}>Complete seu hjuh</Text>
 
         <View style={styles.form}>
           <View style={styles.input}>
@@ -130,7 +131,6 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   form: {
-    display: "flex",
     gap: 12,
   },
   input: {

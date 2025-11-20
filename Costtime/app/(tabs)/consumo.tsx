@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { Ionicons, Feather, MaterialIcons } from '@expo/vector-icons';
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { Ionicons } from '@expo/vector-icons';
+import { PieChart, Pie, Cell } from 'recharts';
 
 export default function ConsumoScreen() {
   const data = [
@@ -36,6 +36,7 @@ export default function ConsumoScreen() {
           <Text style={styles.cardSubtitle}>R$: 1060,00</Text>
 
           <View style={styles.chartContainer}>
+            {/* Gráfico */}
             <PieChart width={150} height={150}>
               <Pie
                 data={data}
@@ -47,11 +48,12 @@ export default function ConsumoScreen() {
                 dataKey="value"
               >
                 {data.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  <Cell key={index} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
             </PieChart>
 
+            {/* Legenda */}
             <View style={styles.legendContainer}>
               {data.map((item, index) => (
                 <Text key={index} style={styles.legendText}>
@@ -67,14 +69,13 @@ export default function ConsumoScreen() {
       <TouchableOpacity style={styles.addButton}>
         <Ionicons name="add" size={30} color="#000" />
       </TouchableOpacity>
-
- 
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#1e1e1e' },
+
   header: {
     height: 80,
     backgroundColor: '#E65729',
@@ -84,6 +85,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 10,
   },
+
   headerTitle: { color: '#fff', fontSize: 18, fontWeight: 'bold' },
 
   content: {
@@ -97,6 +99,7 @@ const styles = StyleSheet.create({
     padding: 15,
     alignItems: 'flex-start',
   },
+
   cardTitle: { color: '#fff', fontSize: 20, fontWeight: 'bold' },
   cardSubtitle: { color: '#ccc', fontSize: 14, marginBottom: 10 },
 
@@ -108,6 +111,7 @@ const styles = StyleSheet.create({
   legendContainer: {
     marginLeft: 20,
   },
+
   legendText: { color: '#ccc', fontSize: 13, marginBottom: 4 },
 
   addButton: {
@@ -120,19 +124,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-
-  bottomBar: {
-    position: 'absolute',
-    bottom: 15,
-    alignSelf: 'center',
-    backgroundColor: '#fff',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    width: 220,
-    height: 55,
-    borderRadius: 30,
-    elevation: 8,
   },
 });
